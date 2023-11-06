@@ -1,0 +1,233 @@
+#
+# Copyright (C) 1993 Theodore Ts'o.  This file may be redistributed
+# under the terms of the GNU Public License.
+#
+command_table debug_cmds;
+
+request do_show_debugfs_params, "显示 debugfs 参数",
+        show_debugfs_params, params;
+
+request do_open_filesys, "打开一个文件系统",
+        open_filesys, open;
+
+request do_close_filesys, "关闭文件系统",
+        close_filesys, close;
+
+request do_freefrag, "报告空闲空间碎片化",
+        freefrag, e2freefrag;
+
+request do_features, "设置/打印超级块特性",
+        feature, features;
+
+request do_dirty_filesys, "标记文件系统为脏的",
+        dirty_filesys, dirty;
+
+request do_init_filesys, "初始化文件系统（销毁数据）",
+        init_filesys;
+
+request do_show_super_stats, "显示超级块统计",
+        show_super_stats, stats;
+
+request do_ncheck, "进行 inode->name 转换",
+        ncheck;
+
+request do_icheck, "进行 block->inode 转换",
+        icheck;
+
+request do_chroot, "更改根目录",
+        change_root_directory, chroot;
+
+request do_change_working_dir, "更改工作目录",
+        change_working_directory, cd;
+
+request do_list_dir, "列出目录",
+        list_directory, ls;
+
+request do_stat, "显示 inode 信息 ",
+        show_inode_info, stat;
+
+request do_dump_extents, "输出 extents 信息 ",
+        dump_extents, extents, ex;
+
+request do_blocks, "输出 inode 使用的块 ",
+        blocks;
+
+request do_filefrag, "报告 inode 的碎片化信息",
+        filefrag;
+
+request do_link, "创建目录链接",
+        link, ln;
+
+request do_unlink, "删除目录链接",
+        unlink;
+
+request do_mkdir, "创建目录",
+        mkdir;
+
+request do_rmdir, "删除目录",
+        rmdir;
+
+request do_rm, "移除文件（unlink 并且如果适用，则 kill_file）",
+        rm;
+
+request do_kill_file, "释放 inode 及其块",
+        kill_file;
+
+request do_copy_inode, "复制 inode 结构",
+        copy_inode;
+
+request do_clri, "清除 inode 的内容",
+        clri;
+
+request do_freei, "清除 inode 的使用标志",
+        freei;
+
+request do_seti, "设置 inode 的使用标志",
+        seti;
+
+request do_testi, "测试 inode 的使用标志",
+        testi;
+
+request do_freeb, "清除块的使用标志",
+        freeb;
+
+request do_setb, "设置块的使用标志",
+        setb;
+
+request do_testb, "测试块的使用标志",
+        testb;
+
+request do_modify_inode, "通过结构修改 inode",
+        modify_inode, mi;
+
+request do_find_free_block, "查找空闲块",
+        find_free_block, ffb;
+
+request do_find_free_inode, "查找空闲 inode",
+        find_free_inode, ffi;
+
+request do_print_working_directory, "打印当前工作目录",
+        print_working_directory, pwd; 
+
+request do_expand_dir, "扩展目录",
+        expand_dir, expand;
+
+request do_mknod, "创建特殊文件",
+        mknod;
+
+request do_lsdel, "列出已删除的 inode",
+        list_deleted_inodes, lsdel;
+
+request do_undel, "恢复文件",
+        undelete, undel;
+
+request do_write, "从本地文件系统复制一个文件",
+        write;
+
+request do_dump, "将 inode 输出到一个文件",
+        dump_inode, dump;
+
+request do_cat, "将 inode输出到 stdout",
+        cat;
+
+request do_lcd, "更改本地文件系统的当前目录",
+        lcd;
+
+request do_rdump, "递归地将目录转储到本地文件系统",
+        rdump;
+
+request do_set_super, "设置超级块值",
+        set_super_value, ssv;
+
+request do_set_inode, "设置 inode 字段",
+        set_inode_field, sif;
+
+request do_set_block_group_descriptor, "设置块组描述符字段",
+        set_block_group, set_bg;
+
+request do_logdump, "转储日志内容",
+        logdump;
+
+request do_htree_dump, "转储哈希索引目录",
+        htree_dump, htree;
+
+request do_dx_hash, "计算文件名的目录哈希",
+        dx_hash, hash;
+
+request do_dirsearch, "搜索特定文件名的目录",
+        dirsearch;
+
+request do_bmap, "计算 inode 的逻辑->物理块映射",
+        bmap;
+
+request do_fallocate, "为 inode 分配未初始化的块",
+        fallocate;
+
+request do_punch, "通过取消分配来截断 inode 的块",
+        punch, truncate;
+
+request do_symlink, "创建符号链接",
+        symlink;
+
+request do_imap, "计算 inode 的位置",
+        imap;
+
+request do_dump_unused, "转储未使用的块",
+        dump_unused;
+
+request do_set_current_time, "设置当前时间以用于设置文件系统字段",
+        set_current_time;
+
+request do_supported_features, "打印此版本的 e2fsprogs 支持的特性",
+        supported_features;
+
+request do_dump_mmp, "转储 MMP 信息",
+        dump_mmp;
+
+request do_set_mmp_value, "设置 MMP 值",
+        set_mmp_value, smmp;
+
+request do_extent_open, "打开 inode 进行 extent 操作",
+        extent_open, eo;
+
+request do_zap_block, "清除块：填充 0，模式，翻转位等",
+        zap_block, zap;
+
+request do_block_dump, "转储块内容",
+        block_dump, bdump, bd;
+
+request do_list_xattr, "列出 inode 的扩展属性",
+        ea_list;
+
+request do_get_xattr, "获取 inode 的一个扩展属性",
+        ea_get;
+
+request do_set_xattr, "设置 inode 的一个扩展属性",
+        ea_set;
+
+request do_rm_xattr, "移除 inode 的一个扩展属性",
+        ea_rm;
+
+request do_list_quota, "列出配额",
+        list_quota, lq;
+
+request do_get_quota, "获取配额",
+        get_quota, gq;
+
+request do_idump, "以十六进制转储 inode 结构",
+        inode_dump, idump, id;
+
+request do_journal_open, "打开日志",
+        journal_open, jo;
+
+request do_journal_close, "关闭日志",
+        journal_close, jc;
+
+request do_journal_write, "将事务写入日志",
+        journal_write, jw;
+
+request do_journal_run, "恢复日志",
+        journal_run, jr;
+
+end;
+
